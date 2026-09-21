@@ -7,6 +7,7 @@ import Invoices from '@/pages/Invoices'
 import InvoiceDetail from '@/pages/InvoiceDetail'
 import Mailboxes from '@/pages/Mailboxes'
 import Suppliers from '@/pages/Suppliers'
+import Integrations from '@/pages/Integrations'
 import Audit from '@/pages/Audit'
 import Reports from '@/pages/Reports'
 
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="facturas" element={<Invoices />} />
           <Route path="facturas/:id" element={<InvoiceDetail />} />
           <Route path="buzones" element={<Mailboxes />} />
+          <Route path="integraciones" element={<Integrations />} />
           <Route path="proveedores" element={<Suppliers />} />
           <Route path="auditoria" element={<Audit />} />
           <Route path="reportes" element={<Reports />} />

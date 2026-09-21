@@ -47,7 +47,7 @@ function Field({ id, fieldKey, label, type, value, confidence }: { id: string; f
           onKeyDown={(e) => e.key === 'Enter' && (e.target as HTMLInputElement).blur()}
         />
       </div>
-      {fieldKey === 'total' && warn && <p className="mt-1 text-[11px] text-amber-700">Verificá contra el documento: el OCR no leyó con certeza este valor.</p>}
+      {fieldKey === 'total' && warn && <p className="mt-1 text-[11px] text-amber-700">Verifica contra el documento: el OCR no leyó con certeza este valor.</p>}
     </div>
   )
 }
@@ -128,7 +128,8 @@ export default function InvoiceDetail() {
             <p className="font-medium text-red-800">Siigo rechazó el comprobante</p>
             <p className="mt-0.5 text-red-700">{invoice.siigoError}</p>
             <p className="mt-2 text-xs text-red-600">
-              Creá el tercero en Siigo o corregí el NIT abajo y reintentá. <Link to="/proveedores" className="underline">Ver proveedor</Link>
+              Crea el tercero en Siigo o corrige el NIT abajo y reintenta.{' '}
+              <Link to={`/integraciones?factura=${invoice.id}`} className="font-medium underline">Resolver en Integraciones</Link>
             </p>
           </div>
         </div>
@@ -145,7 +146,7 @@ export default function InvoiceDetail() {
         <div className="mb-4 flex items-center gap-3 rounded-lg bg-amber-50 p-4 text-sm ring-1 ring-amber-200">
           <Sparkles className="h-5 w-5 text-amber-500" />
           <span className="text-amber-800">
-            Extracción por OCR: <strong>{pendingFields} {pendingFields === 1 ? 'campo requiere' : 'campos requieren'} verificación</strong>. Corregilos contra el documento; al editarlos pasan a confianza alta.
+            Extracción por OCR: <strong>{pendingFields} {pendingFields === 1 ? 'campo requiere' : 'campos requieren'} verificación</strong>. Corrígelos contra el documento; al editarlos pasan a confianza alta.
           </span>
         </div>
       )}
@@ -164,7 +165,7 @@ export default function InvoiceDetail() {
         {/* Campos + correo + auditoría */}
         <div className="space-y-4 xl:col-span-2">
           <Card>
-            <CardHeader title="Datos extraídos" subtitle={invoice.source === 'xml_dian' ? 'Tomados del XML UBL validado por la DIAN' : 'Extraídos con OCR + IA · editá los campos dudosos'} />
+            <CardHeader title="Datos extraídos" subtitle={invoice.source === 'xml_dian' ? 'Tomados del XML UBL validado por la DIAN' : 'Extraídos con OCR + IA · edita los campos dudosos'} />
             <div className="space-y-1 p-3">
               {FIELDS.map((fl) => (
                 <Field key={fl.key} id={invoice.id} fieldKey={fl.key} label={fl.label} type={fl.type} value={f[fl.key]} confidence={invoice.confidence?.[fl.key]} />

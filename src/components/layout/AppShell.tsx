@@ -7,6 +7,7 @@ import {
   Inbox,
   LayoutDashboard,
   LogOut,
+  Plug,
   RotateCcw,
   Search,
   Scissors,
@@ -21,6 +22,7 @@ const nav = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard, end: true },
   { to: '/facturas', label: 'Facturas', icon: FileText },
   { to: '/buzones', label: 'Buzones', icon: Inbox },
+  { to: '/integraciones', label: 'Integraciones', icon: Plug },
   { to: '/proveedores', label: 'Proveedores y reglas', icon: Users },
   { to: '/auditoria', label: 'Auditoría', icon: History },
   { to: '/reportes', label: 'Reportes', icon: BarChart3 },
@@ -64,6 +66,9 @@ export default function AppShell() {
               {to === '/facturas' && pending > 0 && (
                 <span className="rounded-full bg-brand-600 px-1.5 text-[10px] font-semibold text-white">{pending}</span>
               )}
+              {to === '/integraciones' && errors > 0 && (
+                <span className="rounded-full bg-red-500 px-1.5 text-[10px] font-semibold text-white">{errors}</span>
+              )}
             </NavLink>
           ))}
         </nav>
@@ -100,7 +105,7 @@ export default function AppShell() {
             />
           </div>
           <div className="ml-auto flex items-center gap-3">
-            <button className="relative rounded-md p-2 text-slate-500 hover:bg-slate-100" aria-label="Notificaciones" onClick={() => navigate('/facturas?estado=error')}>
+            <button className="relative rounded-md p-2 text-slate-500 hover:bg-slate-100" aria-label="Notificaciones" onClick={() => navigate('/integraciones')}>
               <Bell className="h-4 w-4" />
               {errors > 0 && <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />}
             </button>

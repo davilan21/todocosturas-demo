@@ -1,5 +1,5 @@
 import type { Invoice, Supplier } from '@/data/types'
-import { money, fmtDate } from '@/lib/utils'
+import { money, fmtDate, parseDate, toDateKey } from '@/lib/utils'
 
 /** Render HTML que imita el PDF de la factura. En producción sería el PDF real (pdf.js). */
 export function InvoicePaper({ invoice, supplier }: { invoice: Invoice; supplier?: Supplier }) {
@@ -23,7 +23,7 @@ export function InvoicePaper({ invoice, supplier }: { invoice: Invoice; supplier
           <p className="text-[10px] uppercase tracking-widest text-slate-500">Factura electrónica de venta</p>
           <p className="text-xl font-bold">{f.number}</p>
           <p className="text-slate-500">Fecha: {fmtDate(f.issueDate)}</p>
-          <p className="text-slate-500">Vence: {fmtDate(new Date(new Date(f.issueDate).getTime() + 30 * 86_400_000).toISOString())}</p>
+          <p className="text-slate-500">Vence: {fmtDate(toDateKey(new Date(parseDate(f.issueDate).getTime() + 30 * 86_400_000)))}</p>
         </div>
       </div>
 

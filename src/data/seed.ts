@@ -8,6 +8,7 @@ import type {
   Rule,
   Supplier,
 } from './types'
+import { toDateKey } from '@/lib/utils'
 
 // PRNG determinista: la demo se ve igual en cada recarga.
 function mulberry32(seed: number) {
@@ -176,7 +177,7 @@ function buildInvoice(idx: number, ageDays: number, status: InvoiceStatus, event
       supplierNit: supplier.nit,
       supplierName: supplier.name,
       number,
-      issueDate: issue.toISOString().slice(0, 10),
+      issueDate: toDateKey(issue),
       cufe: makeCufe(),
       subtotal,
       iva,

@@ -179,7 +179,7 @@ export const useStore = create<State & Actions>((set, get) => {
         get().toast({
           kind: 'error',
           title: failed === 1 ? '1 factura falló en Siigo' : `${failed} facturas fallaron en Siigo`,
-          description: 'Revisá el detalle para reintentar.',
+          description: 'Revisa el detalle para reintentar.',
         })
     },
 

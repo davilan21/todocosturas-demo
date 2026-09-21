@@ -44,7 +44,7 @@ export default function Login() {
         >
           <div>
             <h1 className="text-2xl font-semibold text-slate-900">Iniciar sesión</h1>
-            <p className="mt-1 text-sm text-slate-500">Accedé con tu cuenta de Todocosturas.</p>
+            <p className="mt-1 text-sm text-slate-500">Ingresa con tu cuenta de Todocosturas.</p>
           </div>
           <div className="space-y-1">
             <label className="text-xs font-medium text-slate-600">Correo</label>

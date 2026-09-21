@@ -55,7 +55,7 @@ export default function Dashboard() {
         <Kpi label="Pendientes de revisión" value={pending} hint={`${count('nueva')} nuevas · ${count('revisando')} en revisión`} icon={Clock} tone="bg-blue-50 text-blue-600" to="/facturas?estado=nueva" />
         <Kpi label="Aprobadas" value={count('aprobada')} hint="Listas para enviar a Siigo" icon={CheckCircle2} tone="bg-emerald-50 text-emerald-600" to="/facturas?estado=aprobada" />
         <Kpi label="Enviadas a Siigo" value={count('enviada')} hint={`${money(sentTotal)} este periodo`} icon={Send} tone="bg-slate-100 text-slate-600" to="/facturas?estado=enviada" />
-        <Kpi label="Con error" value={count('error')} hint="Requieren acción en Siigo" icon={AlertTriangle} tone="bg-red-50 text-red-600" to="/facturas?estado=error" />
+        <Kpi label="Con error" value={count('error')} hint="Resolver en Integraciones" icon={AlertTriangle} tone="bg-red-50 text-red-600" to="/integraciones" />
       </div>
 
       <div className="mt-6 grid gap-6 xl:grid-cols-3">

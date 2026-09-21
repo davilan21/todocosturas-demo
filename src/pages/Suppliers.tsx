@@ -41,7 +41,7 @@ export default function Suppliers() {
       <PageHeader title="Proveedores y reglas" subtitle="Cada proveedor define cómo se contabiliza y las reglas asignan facturas automáticamente por remitente." />
 
       <Card className="overflow-hidden">
-        <CardHeader title="Proveedores" subtitle="Editá cuenta y centro de costo directamente en la tabla." />
+        <CardHeader title="Proveedores" subtitle="Edita cuenta y centro de costo directamente en la tabla." />
         <table className="w-full text-sm">
           <thead className="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-400">
             <tr>
@@ -78,7 +78,7 @@ export default function Suppliers() {
                       <button
                         onClick={() => {
                           updateSupplier(s.id, { siigoExists: true })
-                          toast({ kind: 'success', title: `Tercero creado en Siigo`, description: `${s.name} · ${s.nit}. Ya podés reintentar las facturas con error.` })
+                          toast({ kind: 'success', title: `Tercero creado en Siigo`, description: `${s.name} · ${s.nit}. Ya puedes reintentar las facturas con error.` })
                         }}
                         className="flex items-center gap-1 rounded bg-amber-50 px-2 py-1 text-xs font-medium text-amber-700 ring-1 ring-amber-200 hover:bg-amber-100"
                       >

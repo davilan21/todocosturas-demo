@@ -26,10 +26,18 @@ Hooks: `git config core.hooksPath .githooks` (una vez por clon).
 - `src/data/seed.ts` — datos semilla deterministas (PRNG con seed fija) y
   `makeIncomingInvoices()` para la sincronización simulada.
 - `src/store/useStore.ts` — todo el estado y las acciones de la demo.
-- `src/pages/*` — una página por ruta. `src/components/invoice/*` — factura
+- `src/pages/*` — una página por ruta. `Integrations.tsx` es el simulador de
+  envío a Siigo paso a paso: la historia de venta (404 → crear tercero →
+  reintentar). Los pasos son visuales; el que cambia estado real es
+  `sendToSiigo`. `src/components/invoice/*` — factura
   renderizada y modal de Siigo.
 
 ## Gotchas
+
+- **Idioma: español de Colombia, tuteo.** Nada de voseo (accedé, elegí, revisá).
+- **Fechas `YYYY-MM-DD` se parsean con `parseDate`/`toDateKey`** (`lib/utils`),
+  nunca con `new Date('2026-09-18')`: eso es UTC y en Bogotá muestra el día
+  anterior. Ya pasó (PDF decía 17, campo decía 18).
 
 - **Selectores de Zustand deben devolver referencias estables.** Un
   `useStore((s) => s.invoices.filter(...))` produce loop infinito. Seleccioná

@@ -11,8 +11,18 @@ const cop = new Intl.NumberFormat('es-CO', {
 })
 export const money = (n: number) => cop.format(n)
 
-export const fmtDate = (iso: string) =>
-  new Date(iso).toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' })
+/** 'YYYY-MM-DD' se interpreta como fecha local; un ISO completo, tal cual. Evita el corrimiento de un día por UTC. */
+export const parseDate = (s: string) => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s)
+  return m ? new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3])) : new Date(s)
+}
+
+export const fmtDate = (s: string) =>
+  parseDate(s).toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' })
+
+/** Fecha local como 'YYYY-MM-DD' (sin pasar por UTC). */
+export const toDateKey = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 
 export const fmtDateTime = (iso: string) =>
   new Date(iso).toLocaleString('es-CO', {
