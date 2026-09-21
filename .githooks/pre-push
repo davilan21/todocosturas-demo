@@ -1,0 +1,5 @@
+#!/bin/sh
+# Gate determinista: no se pushea nada que no compile.
+set -e
+echo "pre-push: npm run build"
+npm run build --silent
